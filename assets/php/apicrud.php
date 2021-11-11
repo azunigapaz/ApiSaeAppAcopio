@@ -213,6 +213,23 @@
                 }
             break;            
 
+            case 'obtenerconceptoscxp':
+                try{
+                    // contruimos la consulta sql
+                    $queryobtenerconceptoscxp = $conxion ->prepare(" SELECT NUM_CPTO,DESCR,TIPO,CON_REFER,SIGNO,ES_FMA_PAG FROM CONP01 WHERE STATUS = 'A' ");
+                    // ejecutamos la consulta
+                    $queryobtenerconceptoscxp ->execute();
+
+                    // recorremos la consulta y convertimos en Array                      
+                    $res = $queryobtenerconceptoscxp->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    $response["tablaconceptoscxp"] = $res;
+                    $response["mensajeobtenerconceptoscxp"] = "Conceptos obtenidos con éxito";
+                }catch(Exception $e){
+                        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+                }
+            break;                        
+
         }
 
         $conxion = null;
