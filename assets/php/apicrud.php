@@ -1,4 +1,5 @@
 <?php
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         include('connsql.php');
 
@@ -231,8 +232,8 @@
             break;                        
 
         }
-
-        $conxion = null;
+        
+        $conxion = null;        
         echo json_encode($response);
 
     }
