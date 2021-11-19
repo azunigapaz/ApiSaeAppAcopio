@@ -143,7 +143,7 @@
             case 'obtenerproductores':
                 try{
                     // contruimos la consulta sql
-                    $queryobtenerproductores = $conxion ->prepare(" SELECT CLAVE,NOMBRE,RFC,CALLE,CRUZAMIENTOS, LOCALIDAD,MUNICIPIO,TELEFONO,SALDO FROM PROV01 WHERE STATUS = 'A' ");
+                    $queryobtenerproductores = $conxion ->prepare(" SELECT CLAVE,NOMBRE,RFC,CALLE,CRUZAMIENTOS, LOCALIDAD,MUNICIPIO,TELEFONO,SALDO,B.CAMPLIB2 AS CERTIFICACION FROM PROV01 A INNER JOIN PROV_CLIB01 B ON A.CLAVE = B.CVE_PROV WHERE STATUS = 'A' ");
                     // ejecutamos la consulta
                     $queryobtenerproductores ->execute();
 
